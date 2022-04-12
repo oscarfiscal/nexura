@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
+/* Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -25,4 +26,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+}); */
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::resource('/empleados', EmployeController::class);
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    })->name('dashboard');
 });
+
+
