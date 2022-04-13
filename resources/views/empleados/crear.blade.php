@@ -40,14 +40,13 @@
                     </fieldset>
                     <!-- select para area -->
                     <div class="row mb-3">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">Area*</label>
+                      <label class="col-sm-2 col-form-label">Area*</label>
                       <div class="col-sm-10">
-                        <select name="area" class="form-control py-2 px-3 rounded-lg border-2">
-                          <option selected>Seleccione una opcion</option>
-                          <option value="1">Administracion</option>
-                          <option value="2">Ventas</option>
-                          <option value="3">Compras</option>
-                          <option value="3">Almacen</option>
+                        <select name="area_id" class="form-control py-2 px-3 rounded-lg border-2">
+                          <option selected>Seleccione una area</option>
+                          @foreach ($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->nombre }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -70,22 +69,20 @@
                         </div>
                       </div>
                     </div>
-                    <!--- checkbox de roles-->
+                    <!--- checkbox de roles y capturar datos-->
+                    
+                     
                     <div class="row mb-3">
-                      <label for="rol" class="col-sm-2 col-form-label">Roles*</label>
+                      <label for="inputEmail3" class="col-sm-2 col-form-label">Roles*</label>
                       <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="administrador" name="rol" value="administrador">
+                        @foreach ($roles as $role)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="rol_id[]" value="{{ $role->id }}">
                             <label class="form-check-label" for="gridCheck1">
-                                Administrador
+                                {{ $role->nombre }}
                             </label>
-                        </div>
-                        <div class="form-check">
-                            <input  class="form-check-input" type="checkbox" id="usuario"  value="usuario">
-                            <label class="form-check-label" for="gridCheck1">
-                                Usuario
-                            </label>
-                        </div>
+                          </div>
+                        @endforeach
                       </div>
                     </div>
 

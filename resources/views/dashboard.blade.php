@@ -30,7 +30,7 @@
                         <td scope="row">{{$employe->nombre}}</td>
                         <td scope="row">{{$employe->correo}}</td>
                         <td scope="row">{{$employe->sexo}}</td>
-                        <td scope="row">{{$employe->area}}</td>
+                        <td scope="row">{{$employe->area->nombre}}</td>
                         @if($employe->boletin)
                         <td scope="row">si</td>
                         @endif

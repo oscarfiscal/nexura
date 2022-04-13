@@ -13,17 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rol_employe', function (Blueprint $table) {
+        Schema::create('employe_rol', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('rol_id')->unsigned();
             $table->bigInteger('employe_id')->unsigned();
+            $table->bigInteger('rol_id')->unsigned();
+           
+
+            $table->foreign('employe_id')->references('id')->on('employes')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->foreign('rol_id')->references('id')->on('rols')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreign('employe_id')->references('id')->on('employes')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+          
             $table->timestamps();
         });
     }
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rol_employe');
+        Schema::dropIfExists('employe_rol');
     }
 };

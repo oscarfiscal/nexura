@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
+use App\Models\Area;
 use App\Models\Employe;
 use Illuminate\Http\Request;
 
@@ -20,9 +22,13 @@ class EmployeController extends Controller
      */
     public function create()
     {
-        //consultar employes
+        //consultar areas
+        $areas = Area::all();
 
-       return view('empleados.crear');
+        //consultar roles
+        $roles = Rol::all();
+
+       return view('empleados.crear', compact('areas','roles'));
     }
 
     /**
@@ -33,6 +39,7 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
+      /*   dd($request->all()); */
       $request->validate([
             'nombre' => 'required',
             'correo' => 'required',
@@ -42,8 +49,22 @@ class EmployeController extends Controller
             'boletin' => 'required',
         ]);
 
-        $employe = $request->all();
-        Employe::create($employe);
+        $employe = $request->only(['nombre','correo','sexo','area_id','descripcion','boletin']);
+
+            $employe = Employe::create($employe);
+
+            if($roles = $request->rol_id)
+            {
+                $roles = $roles;
+                foreach ($roles as $rol) {
+
+                    $employe->roles()->attach(['rol_id'=>$rol,
+                    ]);
+
+                            }
+            }
+
+           
         return redirect('dashboard');
         }
 
