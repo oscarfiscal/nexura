@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rol;
 use App\Models\Area;
 use App\Models\Employe;
 use Illuminate\Database\Seeder;
@@ -34,6 +35,16 @@ class DatabaseSeeder extends Seeder
         ]);
         Area::factory()->create([
             'nombre' => 'Calidad',
+        ]);
+
+        Rol::factory()->create([
+            'nombre' => 'Profesional de pryectos-Desarrollador',
+        ]);
+        Rol::factory()->create([
+            'nombre' => 'Gerente estrategico',
+        ]);
+        Rol::factory()->create([
+            'nombre' => 'Auxiliar de administrativo',
         ]);
         Employe::factory(10)->create();
     }
