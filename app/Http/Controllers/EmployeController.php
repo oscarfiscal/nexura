@@ -139,8 +139,10 @@ class EmployeController extends Controller
      * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employe $employe)
+    public function destroy(Employe $empleado)
     {
         
+        $empleado->delete();
+        return redirect()->route('dashboard');
     }
 }
