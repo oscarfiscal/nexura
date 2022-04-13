@@ -25,7 +25,15 @@ class EmployeControllerTest extends TestCase
         $user = User::factory()->create(); //crea un usuario
         $this->actingAs($user); //autentica el usuario
 
-        Employe::factory()->create(); // crea un empleado
+        Employe::factory()->create([
+            'nombre' => 'Juan',
+            'correo' => 'juan@example.com',
+            'sexo' => 'masculino',
+            'area_id' => Area::factory()->create()->id,
+            'descripcion' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
+            'boletin' => '1',
+
+        ]); // crea un empleado
                    
         $response=$this->get('dashboard')->assertStatus(200); //obtiene la ruta clientes y verifica que el status sea 200
         $employe=Employe::all();  //obtiene todos los empleados 
