@@ -20,8 +20,9 @@ class EmployeController extends Controller
      */
     public function create()
     {
-       
-      
+        //consultar employes
+
+       return view('empleados.crear');
     }
 
     /**
@@ -32,7 +33,7 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      $request->validate([
             'nombre' => 'required',
             'correo' => 'required',
             'sexo' => 'required',
