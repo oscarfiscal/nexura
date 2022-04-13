@@ -76,8 +76,8 @@
                       <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
                       <div class="col-sm-10">
                         <div class="form-check">
-                            <input name="boletin" class="form-check-input" type="checkbox"  value="1" checked required>
-                            
+                            <input name="boletin" class="form-check-input" type="checkbox"  value="1" checked >
+                            <input type="hidden" name="boletin" value="0">
                             <label class="form-check-label" >
                                 Deseo recibir boletin informativo
                             </label>
