@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employe;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 
@@ -30,7 +31,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/empleados', EmployeController::class);
     Route::get('/dashboard', function(){
-        return view('dashboard');
+        $employes = Employe::paginate(5);
+        return view('dashboard',compact('employes'));
     })->name('dashboard');
 });
 

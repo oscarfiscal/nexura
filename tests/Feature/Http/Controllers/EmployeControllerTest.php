@@ -4,6 +4,7 @@ namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Employe;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -15,7 +16,21 @@ class EmployeControllerTest extends TestCase
      *
      * @return void
      */
+    public function test_list_employes()
 
+    {
+        $this->withoutExceptionHandling();
+        
+        $user = User::factory()->create(); //crea un usuario
+        $this->actingAs($user); //autentica el usuario
+
+        Employe::factory()->create(); // crea un empleado
+                   
+        $response=$this->get('dashboard')->assertStatus(200); //obtiene la ruta clientes y verifica que el status sea 200
+        $employe=Employe::all();  //obtiene todos los empleados 
+        $response->assertOk();  //cuando obtenga los empleados verifica que el estado sea 200
+    }
+    
     public function test_create_employe()
     {
         $this->withoutExceptionHandling(); 
