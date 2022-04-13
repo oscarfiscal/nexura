@@ -24,4 +24,5 @@ composer install
 ## Base de datos 
 -   **para correr migraciones y seeders por primera vez**: php artisan migrate --seed 
 -   **Si desea volver a correr migraciones y seeders**: php artisan migrate:fresh --seed 
-
+## correr test 
+ php artistan test 
