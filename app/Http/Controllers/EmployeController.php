@@ -85,9 +85,15 @@ class EmployeController extends Controller
      * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employe $employe)
+    public function edit(Employe $empleado)
     {
-        //
+        //consultar areas
+        $areas = Area::all();
+
+        //consultar roles
+        $roles = Rol::all();
+
+        return view('empleados.editar', compact('empleado','areas','roles'));
     }
 
     /**
@@ -97,9 +103,34 @@ class EmployeController extends Controller
      * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employe $employe)
+    public function update(Request $request, Employe $empleado)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required',
+            'sexo' => 'required',
+            'area_id' => 'required',
+            'descripcion' => 'required',
+            'boletin' => 'required',
+        ]);
+
+        $empleado->update($request->only(['nombre','correo','sexo','area_id','descripcion','boletin']));
+        
+
+        $empleado->roles()->detach();
+
+        if($roles = $request->rol_id)
+        {
+            $roles = $roles;
+            foreach ($roles as $rol) {
+
+                $empleado->roles()->attach(['rol_id'=>$rol,
+                ]);
+
+                        }
+        }
+
+        return redirect('dashboard');
     }
 
     /**
@@ -110,6 +141,6 @@ class EmployeController extends Controller
      */
     public function destroy(Employe $employe)
     {
-        //
+        
     }
 }
