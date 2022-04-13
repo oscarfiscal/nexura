@@ -40,7 +40,6 @@ class EmployeController extends Controller
             'area_id' => 'required',
             'descripcion' => 'required',
             'boletin' => 'required',
-            'rol' => 'required',
         ]);
 
         $employe = $request->all();

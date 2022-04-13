@@ -46,7 +46,6 @@ class EmployeControllerTest extends TestCase
              'area_id' => Area::factory()->create()->id,
              'descripcion' => 'programador',
              'boletin' => '1',
-             'rol' => '1',
         ])->assertRedirect('dashboard');     // cuando se envien los datos redirecciona a la ruta empleados
             
         $this->assertDatabaseHas('employes', [
@@ -56,7 +55,6 @@ class EmployeControllerTest extends TestCase
             'area_id' => 1,
             'descripcion' => 'programador',
             'boletin' => '1',
-            'rol' => '1',
         ]);    // verifica que el empleado se haya creado en la base de datos  
     
     }

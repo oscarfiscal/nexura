@@ -24,7 +24,6 @@ class EmployeFactory extends Factory
             'area_id'=>$this->faker->randomElement([Area::all()->random()]),
             'descripcion' => $this->faker->text,
             'boletin' => $this->faker->boolean,
-            'rol' => $this->faker->randomElement(['administrador', 'usuario']),
         ];
     }
 }
