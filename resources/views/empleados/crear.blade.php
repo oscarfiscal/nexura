@@ -7,19 +7,29 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        
+      <div class="alert alert-info">
+        <ul>
+                <li>Los campos con asteriscos (*) son obligatorios</li>
+        </ul>
+    </div>
             <form action="{{ route('empleados.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                       <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre completo*</label>
                       <div class="col-sm-10">
-                        <input name="nombre" type="text" class="form-control py-2 px-3 rounded-lg border-2 ">
+                        <input   value="{{ old('nombre') }}" name="nombre" type="text" class="form-control py-2 px-3 rounded-lg border-2 ">
+                        @error('nombre')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="inputEmail3" class="col-sm-2 col-form-label">Correo*</label>
                       <div class="col-sm-10">
-                        <input name="correo" type="email" class="form-control py-2 px-3 rounded-lg border-2 " id="inputEmail3">
+                        <input  value="{{ old('correo') }}" name="correo" type="email" class="form-control py-2 px-3 rounded-lg border-2 " id="inputEmail3">
+                        @error('nombre')
+                        <div class="alert alert-danger">{{$message }}</div>
+                    @enderror
                       </div>
                     </div>
                     <fieldset class="row mb-3">
@@ -52,20 +62,28 @@
                     </div>
                     <!-- text area  para descripcion--> 
                     <div class="row mb-3">
-                      <label for="inputEmail3" class="col-sm-2 col-form-label">Descripcion*</label>
+                      <label  class="col-sm-2 col-form-label">Descripcion*</label>
                       <div class="col-sm-10">
                         <textarea name="descripcion" class="form-control py-2 px-3 rounded-lg border-2" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        @error('descripcion')
+                        <div class="alert alert-danger">{{$message }}</div>
+                    @enderror
                       </div>
                     </div>
-                    <!--- checkbox -->
+                    <!--- checkbox-->
+                    
                     <div class="row mb-3">
                       <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
                       <div class="col-sm-10">
                         <div class="form-check">
-                            <input name="boletin" class="form-check-input" type="checkbox"  value="1" >
+                            <input name="boletin" class="form-check-input" type="checkbox"  value="1" checked required>
+                            
                             <label class="form-check-label" >
                                 Deseo recibir boletin informativo
                             </label>
+                            @error('boletin')
+                            <div class="alert alert-danger">{{$message }}</div>
+                        @enderror
                         </div>
                       </div>
                     </div>
