@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('correo');
             $table->string('sexo');
-            $table->string('area');
+            $table->foreignId('area_id')->constrained();
             $table->string('descripcion');
             $table->boolean('boletin')->default(0);
             $table->string('rol');

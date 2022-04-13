@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employe extends Model
+class Area extends Model
 {
     use HasFactory;
 
     protected $guarded=[]; //para que no se puedan crear campos que no existan en la base de datos
 
-    public function area()
+    public function employes()
     {
-        return $this->belongsTo(Area::class,'area_id');
+        return $this->hasMany(Employe::class);
     }
 }

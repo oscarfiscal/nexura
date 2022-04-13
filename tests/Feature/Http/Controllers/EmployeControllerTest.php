@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
+use App\Models\Area;
 use App\Models\User;
 use App\Models\Employe;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -42,7 +43,7 @@ class EmployeControllerTest extends TestCase
             'nombre' => 'oscar fiscal',
              'correo' => 'oscar@example.com',
              'sexo' => 'masculino',
-             'area' => '1',
+             'area_id' => Area::factory()->create()->id,
              'descripcion' => 'programador',
              'boletin' => '1',
              'rol' => '1',
@@ -52,7 +53,7 @@ class EmployeControllerTest extends TestCase
             'nombre' => 'oscar fiscal',
             'correo' => 'oscar@example.com',
             'sexo' => 'masculino',
-            'area' => '1',
+            'area_id' => 1,
             'descripcion' => 'programador',
             'boletin' => '1',
             'rol' => '1',

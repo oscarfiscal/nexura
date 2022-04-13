@@ -37,7 +37,7 @@ class EmployeController extends Controller
             'nombre' => 'required',
             'correo' => 'required',
             'sexo' => 'required',
-            'area' => 'required',
+            'area_id' => 'required',
             'descripcion' => 'required',
             'boletin' => 'required',
             'rol' => 'required',

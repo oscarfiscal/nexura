@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Area;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class EmployeFactory extends Factory
             'nombre' => $this->faker->name,
             'correo' => $this->faker->email,
             'sexo' => $this->faker->randomElement(['masculino', 'femenino']),
-            'area'=>$this->faker->randomElement(['programacion', 'marketing', 'compras', 'finanzas', 'rrhh']),
+            'area_id'=>$this->faker->randomElement([Area::all()->random()]),
             'descripcion' => $this->faker->text,
             'boletin' => $this->faker->boolean,
             'rol' => $this->faker->randomElement(['administrador', 'usuario']),
